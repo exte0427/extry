@@ -1,5 +1,6 @@
 let x;
 let y;
+let  sssy=70;
 let codes=0;
 let xs=[];
 let ys=[];
@@ -31,7 +32,7 @@ async function sdasdasdadsad(myclass){
         let ist=-1;
         let isist=9999;
         for(let i=0;i<thisxy.length;i++){
-          if(thisxy[i]<isist){
+          if(thisxy[i]<isist && thisi[i]!=is[myclass]){
             ist=thisi[i];
             isist=thisxy[i];
           }
@@ -53,6 +54,7 @@ async function sdasdasdadsad(myclass){
             is[myclass]=ist;
           }
         }
+        dodo(is[myclass],$(thiss).css("left").replace("px","")*1,$(thiss).css("top").replace("px","")*1);
         myx=$(thiss).css("left").replace("px","")*1;
         myy=$(thiss).css("top").replace("px","")*1;
         illll=-1;
@@ -72,8 +74,8 @@ $(document).ready(function(){
     y=event.pageY;
   });
 });
-function makecode(html){
-  $("body").append(`<div id="block" style="top: 200px;left: 80px;width: intrinsic;opacity:1;z-index: 0;" onmousedown="sdasdasdadsad(${codes});" class="${codes}">
+function makecode(html,x,y){
+  $("body").append(`<div id="block" style="top: ${y}px;left: ${x}px;width: intrinsic;opacity:1;z-index: 0;" onmousedown="sdasdasdadsad(${codes});" class="${codes}">
     <div style="height:3px;"></div>
     <div style="height: 22px;color:white;">
     <div style="display:inline-block;width:4px;"></div>
@@ -81,6 +83,7 @@ function makecode(html){
     <div style="display:inline-block;width:4px;"></div>
   </div>
   </div>`);
+  sdasdasdadsad(codes);
   xs.push(0);
   ys.push(0);
   is.push(-1);
@@ -99,4 +102,15 @@ function dodo(myc,x,y){
   ys[myc]=y+32;
   xs[myc]=x;
   dodo(is[myc],x,y+32);
+}
+function codegen(html){
+  $("body").append(`<div id="block" style="top: ${sssy}px;left: 82px;width: intrinsic;opacity:1;z-index: 0;" onmousedown="makecode(`+"`"+html+"`"+`,82,${sssy});">
+    <div style="height:3px;"></div>
+    <div style="height: 22px;color:white;">
+    <div style="display:inline-block;width:4px;"></div>
+    ${html}
+    <div style="display:inline-block;width:4px;"></div>
+  </div>
+  </div>`);
+  sssy+=40;
 }
