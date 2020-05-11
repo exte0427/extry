@@ -34,7 +34,6 @@ html,body{
   border-right: 1px solid #e4e4e4;
 }
 #block{
-  background-color: #4d97ff;
   position:fixed;
   height:30px;
   border-radius:5px;
