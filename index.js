@@ -62,6 +62,7 @@ async function sdasdasdadsad(myclass){
         illll=-1;
         xs[myclass]=myx;
         ys[myclass]=myy;
+        dodoend(is[myclass]);
       }
     });
     $(thiss).css("left",x+firstX);
@@ -101,11 +102,18 @@ function plus(a,b){
 function dodo(myc,x,y){
   if(myc==-1){return 0;}
   let thisd="."+myc;
+  $(thisd).css("opacity","0.7");
   $(thisd).css("top",y+32);
   $(thisd).css("left",x);
   ys[myc]=y+32;
   xs[myc]=x;
   dodo(is[myc],x,y+32);
+}
+function dodoend(myc){
+  if(myc==-1){return 0;}
+  let thisd="."+myc;
+  $(thisd).css("opacity","1");
+  dodoend(is[myc]);
 }
 function codegen(html,color,tocolor){
   if(color==undefined){color="#4d97ff";}
