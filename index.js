@@ -5,6 +5,8 @@ let codes=0;
 let xs=[];
 let ys=[];
 let is=[];
+let ooooo;
+let code=[];
 let ji=[];
 let sosso=[];
 let myhtmls=[];
@@ -133,7 +135,7 @@ function dodonewblocks(mcs,x,y){
   $("body").append(myhtmls[mcs].replace("ffffffffffffffffdddddddddddddddddddddf",y+xxx).replace("ffffffffffffffffdddddddsddddddddddddddf",x));
   dodonewblocks(is[mcs],x,y+xxx);
 }
-function makecode(iss,html,x,y,color,tocolor){
+function makecode(eva,iss,html,x,y,color,tocolor){
   html=ji[html];
   $("body").append(`<div id="block" style="top: ${y}px;left: ${x}px;border: 1px solid ${tocolor};width: intrinsic;opacity:1;z-index: 0;background-color: ${color};" onmousedown="sdasdasdadsad(${codes},${iss});" class="${codes}">
     <div style="height:3px;"></div>
@@ -148,7 +150,8 @@ function makecode(iss,html,x,y,color,tocolor){
   xs.push(0);
   ys.push(0);
   is.push(-1);
-  myhtmls.push(`<div id="newblock" style="top: ffffffffffffffffdddddddddddddddddddddfpx;left: ffffffffffffffffdddddddsddddddddddddddfpx;border: 1px solid ${tocolor};width: intrinsic;opacity:0.3;z-index: 0;background-color: ${color};" class="dfgsdfgsdgfsdgfsdgfsdg">
+  code.push(eva);
+  myhtmls.push(`<div id="newblock" style="top: ffffffffffffffffdddddddddddddddddddddfpx;left: ffffffffffffffffdddddddsddddddddddddddfpx;border: 1px solid ${tocolor};filter: grayscale(100%);width: intrinsic;opacity:0.2;z-index: 0;background-color: ${color};" class="dfgsdfgsdgfsdgfsdgfsdg">
     <div style="height:3px;"></div>
     <div style="height: 22px;color:white;">
     <div style="display:inline-block;width:4px;"></div>
@@ -182,15 +185,15 @@ function dodoend(myc){
     ys[myc]=50000;
     $(thisd).css("left",50000);
     $(thisd).css("top",50000);
-    $(thisd).css("z-index",0);
   }
+  $(thisd).css("z-index",0);
   $(thisd).css("opacity","1");
   dodoend(is[myc]);
 }
-function codegen(is,html,color,tocolor){
+function codegen(eva,is,html,color,tocolor){
   if(color==undefined){color="#4d97ff";}
   if(tocolor==undefined){tocolor="#4682d6"}
-  $("body").append(`<div id="block" style="top: ${sssy}px;border: 1px solid ${tocolor};left: 82px;width: intrinsic;opacity:1;z-index: 0;background-color: ${color};" onmousedown="makecode(${is},${iiiii},82,${sssy},'${color}','${tocolor}');">
+  $("body").append(`<div id="block" style="top: ${sssy}px;border: 1px solid ${tocolor};left: 82px;width: intrinsic;opacity:1;z-index: 0;background-color: ${color};" onmousedown="makecode('${eva}',${is},${iiiii},82,${sssy},'${color}','${tocolor}');">
     <div style="height:3px;"></div>
     <div style="height: 22px;color:white;">
     <div style="display:inline-block;width:4px;"></div>
@@ -202,8 +205,24 @@ function codegen(is,html,color,tocolor){
   ji.push(html);
   iiiii++;
 }
-
+function plsrun(i){
+  let a=code[i];
+  a=a.replace("{input}",$(`.${i} > div > input`).val());
+  if(is[i]==-1){
+    return a+"\n";
+  }
+  else{
+    return a+"\n"+plsrun(is[i]);
+  }
+}
+function run(){
+  for(let i=0;i<code.length;i++){
+    if(code[i]=="event"){
+      eval(plsrun(is[i],""));
+    }
+  }
+}
 //makecodes
-codegen(1,`if start`,"#4BBD57","#279B33");
-codegen(2,`return`,"#4BBD57","#279B33");
-codegen(0,`<text>log</text><div style="display:inline-block;width:2px;"></div><input type="text" style="border-radius:5px;border: 1px solid #4682d6;height : 20px;padding: 1px 4px 1px 4px;" value="출력하기"></input>`);
+codegen("event",1,`if start`,"#4BBD57","#279B33");
+codegen("//end",2,`return`,"#4BBD57","#279B33");
+codegen("console.log(`{input}`);",0,`<text>log</text><div style="display:inline-block;width:8px;"></div><input type="text" style="border-radius:5px;border: 1px solid #4682d6;height : 20px;padding: 1px 4px 1px 4px;" value="출력하기"></input>`);
