@@ -10,6 +10,7 @@ html,body{
    -khtml-user-select: none;
    -webkit-user-select: none;
    user-select: none;
+   font-family: sans-serif;
 }
 #mainbar{
   height:60px;
@@ -32,6 +33,13 @@ html,body{
   background-color: white;
   z-index: 400;
   border-right: 1px solid #e4e4e4;
+}
+#newblock{
+  position:fixed;
+  height:30px;
+  border-radius:5px;
+  border: 1px solid #4682d6;
+  cursor: pointer;
 }
 #block{
   position:fixed;
