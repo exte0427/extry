@@ -7,11 +7,13 @@ let ys=[];
 let is=[];
 let ooooo;
 let code=[];
+let drag=0;
 let ji=[];
 let sosso=[];
 let myhtmls=[];
 let iiiii=0;
 async function sdasdasdadsad(myclass,sososososososos){
+  drag=1;
   let sadadasf;
   let sadadasfsadadasf;
   let myx;
@@ -23,6 +25,7 @@ async function sdasdasdadsad(myclass,sososososososos){
   let thiss=thisd;
   const repeat=await setInterval(function() {
     $(thisd).mouseup(function(){
+      drag=0;
       let thisxy=[];
       let thisi=[];
       let myx=$(thiss).css("left").replace("px","")*1;
@@ -84,6 +87,9 @@ async function sdasdasdadsad(myclass,sososososososos){
         }
         dodoend(is[myclass]);
       }
+      $(".dfgsdfgsdgfsdgfsdgfsdg").each(function(){
+        $(this).remove();
+      });
     });
     $(thiss).css("z-index",1);
     myx=$(thiss).css("left").replace("px","")*1;
