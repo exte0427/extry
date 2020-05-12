@@ -9,7 +9,6 @@ let ji=[];
 let sosso=[];
 let iiiii=0;
 async function sdasdasdadsad(myclass,sososososososos){
-  console.log(sososososososos);
   let illll=0;
   let thisd="."+myclass;
   let firstX=(x*(-1))+($(thisd).css("left").replace("px","")*1);
@@ -68,6 +67,12 @@ async function sdasdasdadsad(myclass,sososososososos){
         illll=-1;
         xs[myclass]=myx;
         ys[myclass]=myy;
+        if(myx<250){
+          xs[myclass]=50000;
+          ys[myclass]=50000;
+          $(thiss).css("left",50000);
+          $(thiss).css("top",50000);
+        }
         dodoend(is[myclass]);
       }
     });
@@ -119,6 +124,12 @@ function dodo(myc,x,y){
 function dodoend(myc){
   if(myc==-1){return 0;}
   let thisd="."+myc;
+  if(xs[myc]<250){
+    xs[myc]=50000;
+    ys[myc]=50000;
+    $(thisd).css("left",50000);
+    $(thisd).css("top",50000);
+  }
   $(thisd).css("opacity","1");
   dodoend(is[myc]);
 }
