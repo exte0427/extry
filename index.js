@@ -58,20 +58,30 @@ async function sdasdasdadsad(myclass,sososososososos){
           if(is[i]==myclass){is[i]=-1;}
         }
         if(ist!=-1){//is[sadadasfsadadasf]
-          if(ys[ist]<myy){
-            if(sososososososos!=1 && sosso[ist]!=2){
-              $(thiss).css("top",ys[ist]+32);
-              $(thiss).css("left",xs[ist]);
-              is[ist]=myclass;
+          if(is[ist]==-1){
+            if(ys[ist]>myy && is.indexOf(ist)==-1){
+              if(sososososososos!=2  && sosso[ist]!=1){
+                $(thiss).css("top",ys[ist]-32);
+                $(thiss).css("left",xs[ist]);
+                is[myclass]=ist;
+              }
+            }
+            else{
+              if(sososososososos!=1 && sosso[ist]!=2){
+                $(thiss).css("top",ys[ist]+32);
+                $(thiss).css("left",xs[ist]);
+                is[ist]=myclass;
+              }
             }
           }
           else{
-            if(sososososososos!=2  && sosso[ist]!=1  && is.indexOf(sadadasfsadadasf)==-1){
-              $(thiss).css("top",ys[ist]-32);
-              $(thiss).css("left",xs[ist]);
-              is[myclass]=ist;
-            }
+            //+32
+            $(thiss).css("top",ys[ist]+32);
+            $(thiss).css("left",xs[ist]);
+            is[endIS(myclass)]=is[ist];
+            is[ist]=myclass;
           }
+          saveALL(myclass);
         }
         dodo(is[myclass],$(thiss).css("left").replace("px","")*1,$(thiss).css("top").replace("px","")*1);
         myx=$(thiss).css("left").replace("px","")*1;
@@ -121,9 +131,11 @@ async function sdasdasdadsad(myclass,sososososososos){
         newblocks(myhtmls[myclass],xs[sadadasfsadadasf],ys[sadadasfsadadasf],j,myclass);
       }
       else{
+        if(is[sadadasfsadadasf]!=myclass){
+          $(`.${is[sadadasfsadadasf]}`).css("top",ys[is[sadadasfsadadasf]]+32+end(myclass));
+        }
+        move(is[is[sadadasfsadadasf]],ys[is[sadadasfsadadasf]]+32+end(myclass),myclass);
         newblocks(myhtmls[myclass],xs[sadadasfsadadasf],ys[sadadasfsadadasf],1,myclass);
-        $(`.${is[sadadasfsadadasf]}`).css("top",ys[is[sadadasfsadadasf]]+32+end(myclass));
-        move(is[is[sadadasfsadadasf]],ys[is[sadadasfsadadasf]]+32+end(myclass));
       }
     }
   },1);
@@ -145,8 +157,34 @@ function endY(a,b){
   }
   return endY(is[a],a);
 }
-function move(a,b){
+function endIS(a,b){
+  if(a==-1){
+    return b;
+  }
+  return endIS(is[a],a);
+}
+function saveALL(myclass){
+  for(let i=0;i<ys.length;i++){
+    if(i!=myclass){
+      ys[i]=$(`.${i}`).css("top").replace("px","")*1;
+      xs[i]=$(`.${i}`).css("left").replace("px","")*1;
+    }
+  }
+}
+function move(a,b,myclass){
+  let myclasss=[];
+  let nowIS=myclass;
+  while(true){
+    if(nowIS==-1 || nowIS==undefined){
+      break;
+    }
+    else{
+      myclasss.push(nowIS);
+      nowIS=is[nowIS];
+    }
+  }
   if(a==-1){return;}
+  if(myclasss.indexOf(a)!=-1){return;}
   $(`.${a}`).css("top",b+32);
   move(is[a],b+32);
 }
