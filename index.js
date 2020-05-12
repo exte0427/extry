@@ -7,8 +7,13 @@ let ys=[];
 let is=[];
 let ji=[];
 let sosso=[];
+let myhtmls=[];
 let iiiii=0;
 async function sdasdasdadsad(myclass,sososososososos){
+  let sadadasf;
+  let sadadasfsadadasf;
+  let myx;
+  let myy;
   let illll=0;
   let thisd="."+myclass;
   let firstX=(x*(-1))+($(thisd).css("left").replace("px","")*1);
@@ -24,6 +29,8 @@ async function sdasdasdadsad(myclass,sososososososos){
       clearInterval(repeat);
       if(illll==0){illll=1;}
       if(illll==1){
+        $(thiss).css("z-index",0);
+        $("#newblock").remove();
         for(let i=0;i<xs.length;i++){
           if(xs[i]-50<myx && myx<xs[i]+50 && i!=myclass){
             if(ys[i]-50<myy && myy<ys[i]+50 && i!=myclass){
@@ -76,10 +83,33 @@ async function sdasdasdadsad(myclass,sososososososos){
         dodoend(is[myclass]);
       }
     });
+    $(thiss).css("z-index",1);
+    myx=$(thiss).css("left").replace("px","")*1;
+    myy=$(thiss).css("top").replace("px","")*1;
     $(thiss).css("left",x+firstX);
     $(thiss).css("top",y+firstY);
     $(thiss).css("opacity","0.7");
     dodo(is[myclass],$(thiss).css("left").replace("px","")*1,$(thiss).css("top").replace("px","")*1);
+
+    sadadasf=9999;
+    sadadasfsadadasf=-1;
+    for(let i=0;i<xs.length;i++){
+      if(xs[i]-50<myx && myx<xs[i]+50 && i!=myclass){
+        if(ys[i]-50<myy && myy<ys[i]+50 && i!=myclass && sadadasf>plus(ys[i],myy) && i!=is[myclass]){
+          sadadasf=plus(ys[i],myy);
+          sadadasfsadadasf=i;
+        }
+      }
+    }
+    $(".dfgsdfgsdgfsdgfsdgfsdg").each(function(){
+      $(this).remove();
+    });
+    if(sadadasfsadadasf!=-1){
+      let j=-1;
+      if(myy<ys[sadadasfsadadasf] && sososososososos!=2 && sosso[sadadasfsadadasf]!=1){j=0;}
+      else if(sososososososos!=1 && sosso[sadadasfsadadasf]!=2 && myy>ys[sadadasfsadadasf]){j=1;}
+      newblocks(myhtmls[myclass],xs[sadadasfsadadasf],ys[sadadasfsadadasf],j,myclass);
+    }
   },1);
 
 }
@@ -89,6 +119,20 @@ $(document).ready(function(){
     y=event.pageY;
   });
 });
+function newblocks(myclass,x,y,f,mc){
+  if(f==-1){return;}
+  let xxx=0;
+  if(f==0){xxx=-32;}
+  if(f==1){xxx=32;}
+  $("body").append(myclass.replace("ffffffffffffffffdddddddddddddddddddddf",y+xxx).replace("ffffffffffffffffdddddddsddddddddddddddf",x));
+  dodonewblocks(is[mc],x,y+xxx);
+}
+function dodonewblocks(mcs,x,y){
+  if(mcs==-1){return;}
+  let xxx=32;
+  $("body").append(myhtmls[mcs].replace("ffffffffffffffffdddddddddddddddddddddf",y+xxx).replace("ffffffffffffffffdddddddsddddddddddddddf",x));
+  dodonewblocks(is[mcs],x,y+xxx);
+}
 function makecode(iss,html,x,y,color,tocolor){
   html=ji[html];
   $("body").append(`<div id="block" style="top: ${y}px;left: ${x}px;border: 1px solid ${tocolor};width: intrinsic;opacity:1;z-index: 0;background-color: ${color};" onmousedown="sdasdasdadsad(${codes},${iss});" class="${codes}">
@@ -104,6 +148,14 @@ function makecode(iss,html,x,y,color,tocolor){
   xs.push(0);
   ys.push(0);
   is.push(-1);
+  myhtmls.push(`<div id="newblock" style="top: ffffffffffffffffdddddddddddddddddddddfpx;left: ffffffffffffffffdddddddsddddddddddddddfpx;border: 1px solid ${tocolor};width: intrinsic;opacity:0.3;z-index: 0;background-color: ${color};" class="dfgsdfgsdgfsdgfsdgfsdg">
+    <div style="height:3px;"></div>
+    <div style="height: 22px;color:white;">
+    <div style="display:inline-block;width:4px;"></div>
+    ${html}
+    <div style="display:inline-block;width:4px;"></div>
+  </div>
+  </div>`);
   codes++;
 }
 function plus(a,b){
