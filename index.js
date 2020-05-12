@@ -140,5 +140,5 @@ function codegen(is,html,color,tocolor){
 
 //makecodes
 codegen(1,`if start`,"#4BBD57","#279B33");
-codegen(1,`return`,"#4BBD57","#279B33");
+codegen(2,`return`,"#4BBD57","#279B33");
 codegen(0,`<text>log</text><div style="display:inline-block;width:2px;"></div><input type="text" style="border-radius:5px;border: 1px solid #4682d6;height : 20px;padding: 1px 4px 1px 4px;" value="출력하기"></input>`);
