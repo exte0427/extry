@@ -57,7 +57,7 @@ async function sdasdasdadsad(myclass,sososososososos){
         for(let i=0;i<is.length;i++){
           if(is[i]==myclass){is[i]=-1;}
         }
-        if(ist!=-1){
+        if(ist!=-1){//is[sadadasfsadadasf]
           if(ys[ist]<myy){
             if(sososososososos!=1 && sosso[ist]!=2){
               $(thiss).css("top",ys[ist]+32);
@@ -66,7 +66,7 @@ async function sdasdasdadsad(myclass,sososososososos){
             }
           }
           else{
-            if(sososososososos!=2  && sosso[ist]!=1){
+            if(sososososososos!=2  && sosso[ist]!=1  && is.indexOf(sadadasfsadadasf)==-1){
               $(thiss).css("top",ys[ist]-32);
               $(thiss).css("left",xs[ist]);
               is[myclass]=ist;
@@ -112,11 +112,19 @@ async function sdasdasdadsad(myclass,sososososososos){
     $(".dfgsdfgsdgfsdgfsdgfsdg").each(function(){
       $(this).remove();
     });
+    replaced(myclass);
     if(sadadasfsadadasf!=-1){
-      let j=-1;
-      if(myy<ys[sadadasfsadadasf] && sososososososos!=2 && sosso[sadadasfsadadasf]!=1){j=0;}
-      else if(sososososososos!=1 && sosso[sadadasfsadadasf]!=2 && myy>ys[sadadasfsadadasf]){j=1;}
-      newblocks(myhtmls[myclass],xs[sadadasfsadadasf],ys[sadadasfsadadasf],j,myclass);
+      if(is[sadadasfsadadasf]==-1){
+        let j=-1;
+        if(myy<ys[sadadasfsadadasf] && sososososososos!=2 && sosso[sadadasfsadadasf]!=1 && is.indexOf(sadadasfsadadasf)==-1){j=0;}
+        else if(sososososososos!=1 && sosso[sadadasfsadadasf]!=2 && myy>ys[sadadasfsadadasf]){j=1;}
+        newblocks(myhtmls[myclass],xs[sadadasfsadadasf],ys[sadadasfsadadasf],j,myclass);
+      }
+      else{
+        newblocks(myhtmls[myclass],xs[sadadasfsadadasf],ys[sadadasfsadadasf],1,myclass);
+        $(`.${is[sadadasfsadadasf]}`).css("top",ys[is[sadadasfsadadasf]]+32+end(myclass));
+        move(is[is[sadadasfsadadasf]],ys[is[sadadasfsadadasf]]+32+end(myclass));
+      }
     }
   },1);
 
@@ -127,6 +135,29 @@ $(document).ready(function(){
     y=event.pageY;
   });
 });
+function end(a){
+  let y=$(`.`+a).css("top").replace("px","")*1;
+  return endY(a,y)-y;
+}
+function endY(a,b){
+  if(a==-1){
+    return $(`.`+b).css("top").replace("px","")*1;
+  }
+  return endY(is[a],a);
+}
+function move(a,b){
+  if(a==-1){return;}
+  $(`.${a}`).css("top",b+32);
+  move(is[a],b+32);
+}
+function replaced(myclass){
+  for(let i=0;i<ys.length;i++){
+    if(i!=myclass){
+      $(`.${i}`).css("top",ys[i]);
+      $(`.${i}`).css("left",xs[i]);
+    }
+  }
+}
 function newblocks(myclass,x,y,f,mc){
   if(f==-1){return;}
   let xxx=0;
@@ -178,9 +209,11 @@ function dodo(myc,x,y){
   $(thisd).css("opacity","0.7");
   $(thisd).css("z-index",1);
   $(thisd).css("top",y+32);
-  $(thisd).css("left",x);
+  if(x!="no"){
+    $(thisd).css("left",x);
+    xs[myc]=x;
+  }
   ys[myc]=y+32;
-  xs[myc]=x;
   dodo(is[myc],x,y+32);
 }
 function dodoend(myc){
@@ -227,6 +260,15 @@ function run(){
       eval(plsrun(is[i],""));
     }
   }
+}
+function asdfasdf(i,my,ii){
+  $(`.${i}`).css("top",ys[i]+32);
+  $(`.${my}`).css("top",ys[my]+32);
+  ys[i]=ys[i]+32;
+  ys[my]=ys[my]+32;
+  is[ii]=my;
+  is[my]=i;
+  dodo(is[i],"no",ys[i]+32)
 }
 //makecodes
 codegen("event",1,`if start`,"#4BBD57","#279B33");
