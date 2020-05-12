@@ -167,6 +167,7 @@ function dodo(myc,x,y){
   if(myc==-1){return 0;}
   let thisd="."+myc;
   $(thisd).css("opacity","0.7");
+  $(thisd).css("z-index",1);
   $(thisd).css("top",y+32);
   $(thisd).css("left",x);
   ys[myc]=y+32;
@@ -181,6 +182,7 @@ function dodoend(myc){
     ys[myc]=50000;
     $(thisd).css("left",50000);
     $(thisd).css("top",50000);
+    $(thisd).css("z-index",0);
   }
   $(thisd).css("opacity","1");
   dodoend(is[myc]);
