@@ -92,6 +92,7 @@ async function sdasdasdadsad(myclass,sososososososos){
         if(myx<250){
           xs[myclass]=50000;
           ys[myclass]=50000;
+          is[myclass]=-1;
           $(thiss).css("left",50000);
           $(thiss).css("top",50000);
         }
@@ -293,6 +294,7 @@ function plsrun(i){
   }
 }
 function run(){
+  clear();
   for(let i=0;i<code.length;i++){
     if(code[i]=="event"){
       eval(plsrun(is[i],""));
@@ -308,7 +310,13 @@ function asdfasdf(i,my,ii){
   is[my]=i;
   dodo(is[i],"no",ys[i]+32)
 }
+function clear(){
+  $("#output").html(``);
+}
+function log(str){
+  $("#output").append(`<div style="display:inline-block;width:10px"></div><strong style="color:#FFD879">LOG : </strong><text style="color:white;">${str}</text><div/>`);
+}
 //makecodes
 codegen("event",1,`if start`,"#4BBD57","#279B33");
 codegen("//end",2,`return`,"#4BBD57","#279B33");
-codegen("console.log(`{input}`);",0,`<text>log</text><div style="display:inline-block;width:8px;"></div><input type="text" style="border-radius:5px;border: 1px solid #4682d6;height : 20px;padding: 1px 4px 1px 4px;" value="출력하기"></input>`);
+codegen("log(`{input}`);",0,`<text>log</text><div style="display:inline-block;width:8px;"></div><input type="text" style="border-radius:5px;border: 1px solid #4682d6;height : 20px;padding: 1px 4px 1px 4px;" value="출력하기"></input>`);
