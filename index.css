@@ -26,6 +26,17 @@ html,body{
   box-shadow: 0px 0px 5px 0px #dcdcdc;
   background-color: #fafafa;
 }
+#asdf{
+  display: inline-block;
+  height: 100%;
+  width: 450px;
+  box-shadow: 0px 0px 5px 0px #dcdcdc;
+  background-color: white;
+  float:right;
+  z-index:500;
+  position:absolute;
+  right:0;
+}
 #maincodebar{
   display: inline-block;
   height: 100%;
@@ -60,3 +71,25 @@ input{
   border: 1px solid #4682d6;
 }
 input:focus {outline:none;}
+#console{
+  display: inline-block;
+  height: 380px;
+  width: 400px;
+  background-color: #424b50;
+  border-radius: 15px 15px 0 0;
+  border: 0px;
+
+  font-size: 12px;
+}
+#start{
+  cursor: pointer;
+  border: 0px;
+  display: inline-block;
+  height: 50px;
+  width: 400px;
+  background-color: #F2F2F2;
+  border-radius: 0 0 15px 15px;
+}
+#start:hover{
+  background-color: #F2FBEF;
+}
