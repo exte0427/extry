@@ -76,10 +76,19 @@ async function sdasdasdadsad(myclass,sososososososos){
           }
           else{
             //+32
-            $(thiss).css("top",ys[ist]+32);
+            let j=1;
+            if(myy<ys[ist] && is.indexOf(ist)==-1){j=0;}
+            if(j==1){
+              $(thiss).css("top",ys[ist]+32);
+              is[endIS(myclass)]=is[ist];
+              is[ist]=myclass;
+            }
+            else{
+              $(thiss).css("top",ys[ist]-32);
+              is[endIS(myclass)]=is[ist];
+              //is[ist]=myclass;
+            }
             $(thiss).css("left",xs[ist]);
-            is[endIS(myclass)]=is[ist];
-            is[ist]=myclass;
           }
           saveALL(myclass);
         }
@@ -90,6 +99,7 @@ async function sdasdasdadsad(myclass,sososososososos){
         xs[myclass]=myx;
         ys[myclass]=myy;
         if(myx<250){
+          delet(is[myclass]);
           xs[myclass]=50000;
           ys[myclass]=50000;
           is[myclass]=-1;
@@ -109,7 +119,7 @@ async function sdasdasdadsad(myclass,sososososososos){
     $(thiss).css("top",y+firstY);
     $(thiss).css("opacity","0.7");
     dodo(is[myclass],$(thiss).css("left").replace("px","")*1,$(thiss).css("top").replace("px","")*1);
-
+    is[is.indexOf(myclass)]=-1;
     sadadasf=9999;
     sadadasfsadadasf=-1;
     for(let i=0;i<xs.length;i++){
@@ -135,8 +145,15 @@ async function sdasdasdadsad(myclass,sososososososos){
         if(is[sadadasfsadadasf]!=myclass){
           $(`.${is[sadadasfsadadasf]}`).css("top",ys[is[sadadasfsadadasf]]+32+end(myclass));
         }
-        move(is[is[sadadasfsadadasf]],ys[is[sadadasfsadadasf]]+32+end(myclass),myclass);
-        newblocks(myhtmls[myclass],xs[sadadasfsadadasf],ys[sadadasfsadadasf],1,myclass);
+        let j=1;
+        if(myy<ys[sadadasfsadadasf] && is.indexOf(sadadasfsadadasf)==-1){j=0;}
+        newblocks(myhtmls[myclass],xs[sadadasfsadadasf],ys[sadadasfsadadasf],j,myclass);
+        if(j==0){
+          move(is[is[sadadasfsadadasf]],ys[is[sadadasfsadadasf]]-32+end(myclass),myclass);
+        }
+        else{
+          move(is[is[sadadasfsadadasf]],ys[is[sadadasfsadadasf]]+32+end(myclass),myclass);
+        }
       }
     }
   },1);
@@ -211,7 +228,7 @@ function dodonewblocks(mcs,x,y){
   $("body").append(myhtmls[mcs].replace("ffffffffffffffffdddddddddddddddddddddf",y+xxx).replace("ffffffffffffffffdddddddsddddddddddddddf",x));
   dodonewblocks(is[mcs],x,y+xxx);
 }
-function makecode(eva,iss,html,x,y,color,tocolor){
+function makecode(evals,eva,iss,html,x,y,color,tocolor){
   html=ji[html];
   $("body").append(`<div id="block" style="top: ${y}px;left: ${x}px;border: 1px solid ${tocolor};width: intrinsic;opacity:1;z-index: 0;background-color: ${color};" onmousedown="sdasdasdadsad(${codes},${iss});" class="${codes}">
     <div style="height:3px;"></div>
@@ -268,10 +285,10 @@ function dodoend(myc){
   $(thisd).css("opacity","1");
   dodoend(is[myc]);
 }
-function codegen(eva,is,html,color,tocolor){
+function codegen(evals,eva,is,html,color,tocolor){
   if(color==undefined){color="#4d97ff";}
   if(tocolor==undefined){tocolor="#4682d6"}
-  $("body").append(`<div id="block" style="top: ${sssy}px;border: 1px solid ${tocolor};left: 82px;width: intrinsic;opacity:1;z-index: 0;background-color: ${color};" onmousedown="makecode('${eva}',${is},${iiiii},82,${sssy},'${color}','${tocolor}');">
+  $("body").append(`<div id="block" style="top: ${sssy}px;border: 1px solid ${tocolor};left: 82px;width: intrinsic;opacity:1;z-index: 0;background-color: ${color};" onmousedown="makecode('${evals}','${eva}',${is},${iiiii},82,${sssy},'${color}','${tocolor}');">
     <div style="height:3px;"></div>
     <div style="height: 22px;color:white;">
     <div style="display:inline-block;width:4px;"></div>
@@ -285,6 +302,8 @@ function codegen(eva,is,html,color,tocolor){
 }
 function plsrun(i){
   let a=code[i];
+  if(a==undefined){return //삭제됨
+  }
   a=a.replace("{input}",$(`.${i} > div > input`).val());
   if(is[i]==-1){
     return a+"\n";
@@ -297,7 +316,12 @@ function run(){
   clear();
   for(let i=0;i<code.length;i++){
     if(code[i]=="event"){
-      eval(plsrun(is[i],""));
+      try{
+        eval(plsrun(is[i],""));
+      }
+      catch(err){
+        error(err);
+      }
     }
   }
 }
@@ -313,10 +337,23 @@ function asdfasdf(i,my,ii){
 function clear(){
   $("#output").html(``);
 }
+function error(err){
+  $("#output").append(`<div style="display:inline-block;width:10px"></div><strong style="color:#FFD879">ERROR : </strong><text style="color:white;">${err}</text><div/>`);
+}
 function log(str){
   $("#output").append(`<div style="display:inline-block;width:10px"></div><strong style="color:#FFD879">LOG : </strong><text style="color:white;">${str}</text><div/>`);
 }
+function delet(myclass){
+  if(myclass==-1){return;}
+  xs[myclass]=50000;
+  ys[myclass]=50000;
+  $(`.`+myclass).css("left",50000);
+  $(`.`+myclass).css("top",50000);
+  delet(is[myclass]);
+}
 //makecodes
-codegen("event",1,`if start`,"#4BBD57","#279B33");
-codegen("//end",2,`return`,"#4BBD57","#279B33");
-codegen("log(`{input}`);",0,`<text>log</text><div style="display:inline-block;width:8px;"></div><input type="text" style="border-radius:5px;border: 1px solid #4682d6;height : 20px;padding: 1px 4px 1px 4px;" value="출력하기"></input>`);
+codegen("","event",1,`if start`,"#4BBD57","#279B33");
+codegen("","//end",2,`return`,"#4BBD57","#279B33");
+codegen("","log(`{input}`);",0,`<text>log</text><div style="display:inline-block;width:8px;"></div><input type="text" style="border-radius:5px;border: 1px solid #4682d6;height : 20px;padding: 1px 4px 1px 4px;" value="출력하기"></input>`);
+codegen("while","while(true){",0,`while true`,"#FFBF00","#d8a200");//#FFBF00
+codegen("","}",0,`}`,"#FFBF00","#d8a200");//#FFBF00
